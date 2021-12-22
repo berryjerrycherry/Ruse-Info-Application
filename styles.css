@@ -1,0 +1,27 @@
+img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width:200px;
+  height: 200px;
+  animation: fadeinout 5s linear forwards;
+  -webkit-animation: fadeinout 5s linear forwards;
+
+}
+
+@-webkit-keyframes fadeinout {
+0%,100% { opacity: 0; }
+50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+0%,100% { opacity: 0; }
+50% { opacity: 1; }
+}
+
+body {
+  background-color: #fefefe;
+}

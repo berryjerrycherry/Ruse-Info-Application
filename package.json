@@ -1,0 +1,15 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "An app for monitoring weather",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Jerry",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^16.0.5",
+    "eslint": "^8.5.0"
+  }
+}
