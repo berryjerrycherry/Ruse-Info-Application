@@ -5,4 +5,4 @@
 - Provides a timetable
 - Weather
 - Time/Clock
-- 
+- Other pages, idk
