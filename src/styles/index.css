@@ -9,19 +9,22 @@ img {
   height: 200px;
   animation: fadeinout 5s linear forwards;
   -webkit-animation: fadeinout 5s linear forwards;
-
 }
 
 @-webkit-keyframes fadeinout {
-0%,100% { opacity: 0; }
-50% { opacity: 1; }
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
 }
 
 @keyframes fadeinout {
-0%,100% { opacity: 0; }
-50% { opacity: 1; }
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
 }
 
 body {
-  background-color: #131111;
+  background-color: #1C1E20;
+}
+
+.background {
+  background-color: #1C1E20;
 }
