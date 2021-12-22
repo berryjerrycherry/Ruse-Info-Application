@@ -4,7 +4,8 @@
   "description": "An app for monitoring weather",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-win": "electron-packager . markdownelectron  --icon=icon/language_markdown_outline_icon_139425.ico --overwrite --asar --platform=win32 --arch=ia32  --prune=true --out=buildsep --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"MarkDown\""
   },
   "contributors": [
     "Jerry Sun",
@@ -12,7 +13,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "electron": "^16.0.5"
-  },
-  "dependencies": {}
+    "electron": "^16.0.5",
+    "electron-packager": "^15.4.0"
+  }
 }

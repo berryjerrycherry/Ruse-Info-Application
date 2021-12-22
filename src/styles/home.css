@@ -4,12 +4,19 @@
   --primary-text-color: white;
   --rounding: 15px;
   --text-size: 1rem;
+  --subtitle-text-size: 2.2rem;
 }
 
 @keyframes fadein {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+@font-face {
+  font-family: NotoSansBold;
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Bold.otf);
+}
+
 
 body {
   color: var(--primary-text-color);
@@ -25,7 +32,8 @@ body {
   padding: 20px;
   color: var(--primary-text-color);
   background-color: var(--secondary-bg-color);
-  font-size: var(--text-size);
+  font-family: NotoSansBold;
+  font-size: var(--subtitle-text-size);
   border-radius: var(--rounding);
   filter: drop-shadow(0px 3px 4px black)
 }
