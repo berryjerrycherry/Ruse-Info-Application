@@ -206,6 +206,19 @@ body {
   font-size: var(--clock-text-size);
 }
 
+#day {
+  margin: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-family: 'Noto Sans JP Bold';
+  color: var(--primary-text-color);
+  font-size: var(--clock-text-size);
+}
+
+
+
 .diamond-button {
   background-color: var(--diamond-button-bg);
   height: 42px;
@@ -233,4 +246,7 @@ body {
   top: 27%;
 }
 
+#day{
+  bottom:10%;
+}
 
