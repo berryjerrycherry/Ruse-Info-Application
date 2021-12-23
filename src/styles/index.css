@@ -22,3 +22,6 @@ body {
 .background {
   background-color: #1C1E20;
 }
+body {
+  user-select: none;
+}

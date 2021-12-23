@@ -87,3 +87,6 @@ body {
   color: none;
   background: none;
 }
+body {
+  user-select: none;
+}
