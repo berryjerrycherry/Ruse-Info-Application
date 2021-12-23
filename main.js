@@ -12,11 +12,6 @@ const createWindow = async () => {
   mainWindow.setMenuBarVisibility(false)
 
   await mainWindow.loadFile('./src/index.html')
-  // mainWindow.webContents.openDevTools()
-
-  setTimeout(() =>{
-    mainWindow.loadFile('./src/home.html')
-  }, 2000)
 }
 
 app.whenReady().then(async () => {
