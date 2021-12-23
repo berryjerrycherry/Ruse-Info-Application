@@ -7,6 +7,7 @@
   --text-size: 1rem;
   --subtitle-text-size: 26px;
   --small-text-size: 14px;
+  --title-text-size: 2.5rem;
 }
 
 @font-face {
@@ -40,6 +41,12 @@ body {
   100% { opacity: 1; }
 }
 
+
+.title {
+  font-family: 'Noto Sans JP Bold';
+  color: var(--primary-text-color);
+  font-size: var(--title-text-size);
+}
 
 .subtitle {
   font-family: 'Noto Sans JP Bold';
