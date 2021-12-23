@@ -2,9 +2,15 @@
   --primary-bg-color: #1C1E20;
   --secondary-bg-color: #272B2E;
   --primary-text-color: white;
+  --secondary-text-color: #9F9F9F;
   --rounding: 15px;
   --text-size: 1rem;
-  --subtitle-text-size: 2.2rem;
+  --subtitle-text-size: 26px;
+  --class-text-size: 26px;
+  --teacher-text-size: 20px;
+  --next-class-room-text-size: 26px;
+  --degrees-text-size: 3rem;
+  --clock-text-size: 2rem;
 }
 
 @keyframes fadein {
@@ -13,10 +19,19 @@
 }
 
 @font-face {
-  font-family: NotoSansBold;
+  font-family: 'Noto Sans JP Bold';
   src: url(../assets/fonts/Noto_Sans/NotoSansJP-Bold.otf);
 }
 
+@font-face {
+  font-fmaily: 'Noto Sans JP';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Regular.otf)
+}
+
+@font-face {
+  font-fmaily: 'Noto Sans JP Thin';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Thin.otf)
+}
 
 body {
   color: var(--primary-text-color);
@@ -25,15 +40,151 @@ body {
 }
 
 .rounded-card {
-  margin: 30px;
-  width: 25%;
-  height: 25%;
+  margin: 5%;
   position: absolute;
   padding: 20px;
   color: var(--primary-text-color);
   background-color: var(--secondary-bg-color);
-  font-family: NotoSansBold;
-  font-size: var(--subtitle-text-size);
   border-radius: var(--rounding);
-  filter: drop-shadow(0px 3px 4px black)
+  filter: drop-shadow(0px 2px 1px black)
+}
+
+.drop-shadow {
+  filter: drop-shadow(0px 2px 1px black)
+}
+
+.subtitle::selection {
+  color: none;
+  background: none;
+}
+
+.text::selection {
+  color: none;
+  background: none;
+}
+
+.subtitle {
+  font-family: 'Noto Sans JP Bold';
+  color: var(--primary-text-color);
+  font-size: var(--subtitle-text-size);
+}
+
+#next-class {
+  width: 27.5%;
+  height: 25%;
+}
+
+#weather {
+  top: 47.5%;
+  width: 27.5%;
+  height: 25%;
+}
+
+
+.flex-container {
+  display: flex;
+}
+
+#timetable-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+#next-class-text {
+  font-family: 'Noto Sans JP' !important;
+}
+
+#next-class-teacher {
+  font-family: 'Noto Sans JP Thin';
+  font-size: var(--teacher-text-size);
+}
+
+#next-class-room {
+  color: var(--secondary-text-color);
+  font-size: var(--next-class-room-text-size);
+}
+
+#next-class-title {
+  margin-right: 20px;
+}
+
+#next-class-timer {
+  color: var(--secondary-text-color);
+}
+
+.text {
+  font-family: 'Noto Sans JP';
+  font-size: var(--text-size);
+}
+
+.timetable-entry {
+  margin: 5%;
+  padding: 30px;
+  height: 30%;
+  flex-grow: 1;
+  color: var(--primary-text-color);
+  background-color: var(--secondary-bg-color);
+  border-radius: var(--rounding);
+}
+
+.class-text {
+  color: var(--primary-text-color);
+  font-size: var(--class-text-size);
+  position: absolute;
+  margin-left: 20px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.room-text {
+  color: var(--secondary-text-color);
+  font-size: var(--class-text-size);
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+#class-timetable {
+  margin: 2%;
+  text-align: center;
+  left: 65%;
+  width: 30%;
+  height: 80%;
+  position: absolute;
+}
+
+#degrees {
+  font-size: var(--degrees-text-size);
+}
+
+#weather-title {}
+
+#navbar {
+  position: absolute;
+  width: 10%;
+  left: 40%;
+  height: 71.5%;
+}
+
+#clock {
+  margin: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-family: 'Noto Sans JP Bold';
+  color: var(--primary-text-color);
+  font-size: var(--clock-text-size);
 }
