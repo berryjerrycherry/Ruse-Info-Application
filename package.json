@@ -1,7 +1,8 @@
 {
-  "name": "weather-app",
+  "name": "ruse-dashboard",
+  "author": "Jerry S",
   "version": "1.0.0",
-  "description": "An app for monitoring weather",
+  "description": "A school dashboard for work",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -14,6 +15,10 @@
   "license": "MPL-2.0",
   "devDependencies": {
     "electron": "^16.0.5",
+    "electron-installer-windows": "^3.0.0",
     "electron-packager": "^15.4.0"
+  },
+  "dependencies": {
+    "electron-winstaller": "^5.0.0"
   }
 }
