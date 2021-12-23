@@ -32,7 +32,14 @@
 
 body {
   background-color: var(--primary-bg-color);
+  animation: fadein .25s linear forwards;
 }
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 
 .subtitle {
   font-family: 'Noto Sans JP Bold';
@@ -44,4 +51,32 @@ body {
   color: var(--primary-text-color);
   font-family: 'Noto Sans JP';
   font-size: var(--text-size);
+}
+
+#main {
+  margin-left: 5%;
+}
+
+#back-button {
+  width: 50px;
+  height: 50px;
+}
+
+#back-button::selection {
+  color: none;
+  background: none;
+}
+
+#back-button:hover {
+  filter: brightness(80%);
+}
+
+.subtitle::selection {
+  color: none;
+  background: none;
+}
+
+.text::selection {
+  color: none;
+  background: none;
 }

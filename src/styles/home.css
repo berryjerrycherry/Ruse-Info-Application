@@ -47,7 +47,7 @@ body {
   font-family: 'Noto Sans JP';
   color: var(--primary-text-color);
   background-color: var(--primary-bg-color);
-  animation: fadein .75s linear forwards;
+  animation: fadein .25s linear forwards;
 }
 
 .rounded-card {
