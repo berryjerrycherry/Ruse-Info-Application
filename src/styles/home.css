@@ -11,6 +11,8 @@
   --next-class-room-text-size: 26px;
   --degrees-text-size: 3rem;
   --clock-text-size: 1.5rem;
+  --diamond-button-bg: white;
+  --diamond-button-hover-bg: #F4856E;
 }
 
 @keyframes fadein {
@@ -168,6 +170,8 @@ body {
 
 #degrees {
   font-size: var(--degrees-text-size);
+  margin-top: 10px;
+  position: absolute;
 }
 
 #weather-title {}
@@ -177,6 +181,7 @@ body {
   width: 10%;
   left: 40%;
   height: 71.5%;
+  text-align: center;
 }
 
 #clock {
@@ -190,17 +195,22 @@ body {
   font-size: var(--clock-text-size);
 }
 
-
-/* #Shape Styles
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.diamond-shape {
-  background: #fff;
+.diamond-button {
+  background-color: var(--diamond-button-bg);
   height: 42px;
   text-align: center;
-  transform:rotate(45deg);
+  transform: rotate(45deg);
 	width:42px;
-  position: absolute;
-  left: 49.8%;
-  top: 25%;
+  margin: 0 auto;
+  position: relative;
   border-radius: 5px;
+  display: inline-block;
+}
+
+.diamond-button:hover {
+  background-color: var(--diamond-button-hover-bg);
+}
+
+#credits {
+  top: 25%;
 }
