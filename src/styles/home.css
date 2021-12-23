@@ -37,6 +37,12 @@
   src: url(../assets/fonts/Noto_Sans/NotoSansJP-Thin.otf);
 }
 
+
+@font-face {
+  font-family: 'Noto Sans JP Light';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Light.otf);
+}
+
 body {
   font-family: 'Noto Sans JP';
   color: var(--primary-text-color);
@@ -134,6 +140,11 @@ body {
 .text {
   font-family: 'Noto Sans JP';
   font-size: var(--text-size);
+}
+
+.lighttext {
+  font-family: 'Noto Sans JP Light';
+  font-size: 18px;
 }
 
 .timetable-item {
@@ -258,4 +269,9 @@ body {
   top: 15%;
   flex-direction: column;
   align-items: stretch;
+}
+#date{
+  bottom:5%;
+  left: 23.8%;
+  position:absolute;
 }
