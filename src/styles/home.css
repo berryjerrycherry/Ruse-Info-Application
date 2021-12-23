@@ -211,6 +211,6 @@ body {
   background-color: var(--diamond-button-hover-bg);
 }
 
-#credits {
-  top: 25%;
+#settings {
+  top: 18%
 }
