@@ -189,3 +189,18 @@ body {
   color: var(--primary-text-color);
   font-size: var(--clock-text-size);
 }
+
+
+/* #Shape Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.diamond-shape {
+  background: #fff;
+  height: 42px;
+  text-align: center;
+  transform:rotate(45deg);
+	width:42px;
+  position: absolute;
+  left: 49.8%;
+  top: 25%;
+  border-radius: 5px;
+}
