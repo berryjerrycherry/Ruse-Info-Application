@@ -1,0 +1,47 @@
+:root {
+  --primary-bg-color: #1C1E20;
+  --secondary-bg-color: #272B2E;
+  --primary-text-color: white;
+  --secondary-text-color: #9F9F9F;
+  --rounding: 15px;
+  --text-size: 1rem;
+  --subtitle-text-size: 26px;
+  --small-text-size: 14px;
+}
+
+@font-face {
+  font-family: 'Noto Sans JP Bold';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Bold.otf);
+}
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Regular.otf);
+}
+
+@font-face {
+  font-family: 'Noto Sans JP Thin';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Thin.otf);
+}
+
+
+@font-face {
+  font-family: 'Noto Sans JP Light';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Light.otf);
+}
+
+body {
+  background-color: var(--primary-bg-color);
+}
+
+.subtitle {
+  font-family: 'Noto Sans JP Bold';
+  color: var(--primary-text-color);
+  font-size: var(--subtitle-text-size);
+}
+
+.text {
+  color: var(--primary-text-color);
+  font-family: 'Noto Sans JP';
+  font-size: var(--text-size);
+}
