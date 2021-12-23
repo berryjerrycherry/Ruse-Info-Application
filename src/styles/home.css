@@ -25,12 +25,12 @@
 
 @font-face {
   font-fmaily: 'Noto Sans JP';
-  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Regular.otf)
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Regular.otf);
 }
 
 @font-face {
   font-fmaily: 'Noto Sans JP Thin';
-  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Thin.otf)
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Thin.otf);
 }
 
 body {
