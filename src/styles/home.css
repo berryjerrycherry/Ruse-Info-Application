@@ -218,7 +218,6 @@ body {
 }
 
 
-
 .diamond-button {
   background-color: var(--diamond-button-bg);
   height: 42px;
@@ -226,7 +225,7 @@ body {
   transform: rotate(45deg);
 	width:42px;
   margin: 0 auto;
-  position: absolute;
+  position: relative;
   border-radius: 5px;
   display: inline-block;
 }
@@ -237,9 +236,10 @@ body {
 
 #settings {
   top: 18%;
-  left: 37%
 }
+
 .small-text{
+  width: 100%;
   text-align: center;
   display: inline-block;
   position: relative;
