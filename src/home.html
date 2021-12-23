@@ -31,35 +31,45 @@
   <div id="navbar" class="rounded-card">
     <div id="clock" class="text">00:00</div>
     <script src="./scripts/clock.js"></script>
-    <a href=settings.html>
-      <div id="settings" class="diamond-button"></div>
-    </a>
-    <span id="settings-title" class="small-text">SETTINGS</span>
-  <div id="day" class="text">00:00</div>
-    <script src="./scripts/todays-day.js"></script>
-  </div>
+    <div id="navbar-container" class="flex-container">
+      <div class="navbar-item">
+        <a href="./settings.html">
+          <div id="settings" class="diamond-button"></div>
+        </a>
+        <span id="settings-title" class="small-text">SETTINGS</span>
+      </div>
+      <div class="navbar-item">
+        <a href="./about.html">
+          <div id="about" class="diamond-button"></div>
+        </a>
+        <span id="about-title" class="small-text">ABOUT</span>
+      </div>
+    </div>
+    <div id="day" class="text"></div>
+      <script src="./scripts/todays-day.js"></script>
+    </div>
   </div>
 
   <div id="class-timetable">
     <span class="subtitle">TODAY'S CLASSES</span>
     <div id="timetable-container" class="flex-container">
-      <div id="timetable1" class="timetable-entry drop-shadow">
+      <div id="timetable1" class="timetable-item drop-shadow">
         <span id="class-1" class="text class-text"></span>
         <span id="room-1" class="room-text text"></span>
       </div>
-      <div id="timetable2" class="timetable-entry drop-shadow">
+      <div id="timetable2" class="timetable-item drop-shadow">
         <span id="class-2" class="text class-text"></span>
         <span id="room-2" class="room-text text"></span>
       </div>
-      <div id="timetable3" class="timetable-entry drop-shadow">
+      <div id="timetable3" class="timetable-item drop-shadow">
         <span id="class-3" class="text class-text"></span>
         <span id="room-3" class="room-text text"></span>
       </div>
-      <div id="timetable4" class="timetable-entry drop-shadow">
+      <div id="timetable4" class="timetable-item drop-shadow">
         <span id="class-4" class="text class-text"></span>
         <span id="room-4" class="room-text text"></span>
       </div>
-      <div id="timetable5" class="timetable-entry drop-shadow">
+      <div id="timetable5" class="timetable-item drop-shadow">
         <span id="class-5"class="text class-text"></span>
         <span id="room-5" class="room-text text"></span>
       </div>

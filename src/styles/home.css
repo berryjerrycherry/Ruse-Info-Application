@@ -14,6 +14,7 @@
   --clock-text-size: 1.5rem;
   --diamond-button-bg: white;
   --diamond-button-hover-bg: #F4856E;
+  --diamond-size: 40px;
 }
 
 @keyframes fadein {
@@ -135,7 +136,7 @@ body {
   font-size: var(--text-size);
 }
 
-.timetable-entry {
+.timetable-item {
   margin: 5%;
   padding: 30px;
   height: 30%;
@@ -220,10 +221,10 @@ body {
 
 .diamond-button {
   background-color: var(--diamond-button-bg);
-  height: 42px;
+  height: var(--diamond-size);
   text-align: center;
   transform: rotate(45deg);
-	width:42px;
+	width: var(--diamond-size);
   margin: 0 auto;
   position: relative;
   border-radius: 5px;
@@ -234,19 +235,27 @@ body {
   background-color: var(--diamond-button-hover-bg);
 }
 
-#settings {
-  top: 18%;
-}
-
 .small-text{
+  margin-top: 50px;
+  left: 0;
+  right: 0;
   width: 100%;
   text-align: center;
   display: inline-block;
-  position: relative;
-  top: 27%;
+  position: absolute;
+}
+
+.navbar-item {
+  margin: 30px;
 }
 
 #day{
   bottom:10%;
 }
 
+#navbar-container {
+  position: relative;
+  top: 15%;
+  flex-direction: column;
+  align-items: stretch;
+}
