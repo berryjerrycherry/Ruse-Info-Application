@@ -6,6 +6,7 @@
   --rounding: 15px;
   --text-size: 1rem;
   --subtitle-text-size: 26px;
+  --small-text-size:14px;
   --class-text-size: 26px;
   --teacher-text-size: 20px;
   --next-class-room-text-size: 26px;
@@ -65,7 +66,17 @@ body {
   color: none;
   background: none;
 }
+.small-text::selection {
+  color: none;
+  background: none;
+}
 
+
+.small-text{
+  font-family: 'Noto Sans JP Thin';
+  color: var(--primary-text-color);
+  font-size: var(--small-text-size);
+}
 .subtitle {
   font-family: 'Noto Sans JP Bold';
   color: var(--primary-text-color);
@@ -202,7 +213,7 @@ body {
   transform: rotate(45deg);
 	width:42px;
   margin: 0 auto;
-  position: relative;
+  position: absolute;
   border-radius: 5px;
   display: inline-block;
 }
@@ -212,5 +223,14 @@ body {
 }
 
 #settings {
-  top: 18%
+  top: 18%;
+  left: 37%
 }
+.small-text{
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  top: 27%;
+}
+
+
