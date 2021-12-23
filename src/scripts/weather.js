@@ -9,8 +9,10 @@ window.onload = () => {
     req.send()
 
     req.onreadystatechange = (e) => {
-      alert(req.responseText)
-      // let json = JSON.parse(req.responseText)
+      let json = JSON.parse(req.responseText)
+      console.log(json)
+      document.getElementById('degrees').innerText = `${Math.floor(json.main.temp * 10) / 10}°C`
+      document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`
     }
   }
 
