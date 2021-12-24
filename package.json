@@ -13,8 +13,8 @@
 "build":{
   "appId": "ruse-dashboard",
   "win":{
-    "target": ["nsis"]
-    
+    "target": ["nsis"],
+    "icon": "./src/assets/dashboard-logo.ico"
   },
   "nsis": {
     "uninstallDisplayName":"Ruse Dashboard",
