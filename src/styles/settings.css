@@ -36,3 +36,8 @@ body {
 body {
   user-select: none;
 }
+
+.light-mode {
+  background-color: rgb(226, 221, 221);
+  color: rgb(12, 2, 2);
+}

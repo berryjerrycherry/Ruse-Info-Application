@@ -16,6 +16,11 @@
 }
 
 @font-face {
+  font-family: 'Noto Sans JP Medium';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Medium.otf);
+}
+
+@font-face {
   font-family: 'Noto Sans JP';
   src: url(../assets/fonts/Noto_Sans/NotoSansJP-Regular.otf);
 }
@@ -53,6 +58,13 @@ body {
   color: var(--primary-text-color);
   font-size: var(--subtitle-text-size);
 }
+
+.smallersubtitle {
+  font-family: 'Noto Sans JP Medium';
+  color: var(--primary-text-color);
+  font-size: 22px;
+}
+
 
 .text {
   color: var(--primary-text-color);
