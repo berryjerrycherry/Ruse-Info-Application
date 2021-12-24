@@ -59,13 +59,11 @@ body {
   font-size: var(--subtitle-text-size);
 }
 
-.smallersubtitle {
+.smaller-subtitle {
   font-family: 'Noto Sans JP Medium';
   color: var(--primary-text-color);
   font-size: 22px;
 }
-
-
 .text {
   color: var(--primary-text-color);
   font-family: 'Noto Sans JP';

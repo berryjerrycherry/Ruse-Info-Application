@@ -7,6 +7,68 @@
   --text-size: 1rem;
   --subtitle-text-size: 26px;
   --small-text-size: 14px;
+  --title-text-size: 2.5rem;
+  --button-hover-bg: #F4856E;
+  --button-click-bg: #a14633;
+}
+
+@font-face {
+  font-family: 'Noto Sans JP Bold';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Bold.otf);
+}
+
+@font-face {
+  font-family: 'Noto Sans JP Medium';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Medium.otf);
+}
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Regular.otf);
+}
+
+@font-face {
+  font-family: 'Noto Sans JP Thin';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Thin.otf);
+}
+
+
+@font-face {
+  font-family: 'Noto Sans JP Light';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Light.otf);
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  animation: fadein .25s linear forwards;
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+.title {
+  font-family: 'Noto Sans JP Bold';
+  color: var(--primary-text-color);
+  font-size: var(--title-text-size);
+}
+
+.subtitle {
+  font-family: 'Noto Sans JP Bold';
+  color: var(--primary-text-color);
+  font-size: var(--subtitle-text-size);
+}
+
+.text {
+  color: var(--primary-text-color);
+  font-family: 'Noto Sans JP';
+  font-size: var(--text-size);
+}
+
+#main {
+  margin-left: 5%;
 }
 
 #back-button {
@@ -23,21 +85,36 @@
   filter: brightness(80%);
 }
 
-body {
-  background-color: var(--primary-bg-color);
-  animation: fadein .25s linear forwards;
+.subtitle::selection {
+  color: none;
+  background: none;
 }
 
-@keyframes fadein {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+.text::selection {
+  color: none;
+  background: none;
 }
-
 body {
   user-select: none;
 }
 
-.light-mode {
-  background-color: rgb(226, 221, 221);
-  color: rgb(12, 2, 2);
+.file {
+  display: none;
+}
+
+#file-input-text {
+  padding: 10px;
+  background-color: var(--secondary-bg-color);
+  color: var(--primary-text-color);
+  font-family: 'Noto Sans JP';
+  font-size: var(--text-size);
+  border-radius: var(--rounding);
+}
+
+#file-input-text:hover {
+  background-color: var(--button-hover-bg);
+}
+
+#file-input-text:active {
+  background-color: var(--button-click-bg);
 }
