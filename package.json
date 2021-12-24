@@ -2,7 +2,7 @@
   "name": "ruse-dashboard",
   "productName": "Ruse Dashboard",
   "author": "Jerry S",
-  "version": "1.0.0",
+  "version": "0.3.1",
   "description": "A school dashboard for work",
   "main": "main.js",
   "scripts": {
