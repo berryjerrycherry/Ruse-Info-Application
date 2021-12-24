@@ -1,13 +1,29 @@
 {
   "name": "ruse-dashboard",
+  "productName": "Ruse Dashboard",
   "author": "Jerry S",
   "version": "1.0.0",
   "description": "A school dashboard for work",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package-win": "electron-packager . markdownelectron  --icon=icon/language_markdown_outline_icon_139425.ico --overwrite --asar --platform=win32 --arch=ia32  --prune=true --out=buildsep --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"MarkDown\""
+    "package-win": "electron-packager . markdownelectron  --icon=icon/language_markdown_outline_icon_139425.ico --overwrite --asar --platform=win32 --arch=ia32  --prune=true --out=buildsep --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"MarkDown\"",
+    "build-installer": "electron-builder"
   },
+"build":{
+  "appId": "ruse-dashboard",
+  "win":{
+    "target": ["nsis"]
+    
+  },
+  "nsis": {
+    "uninstallDisplayName":"Ruse Dashboard",
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
+  }
+},
+
+
   "contributors": [
     "Jerry Sun",
     "Raymond Zhu"
