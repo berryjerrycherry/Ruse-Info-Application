@@ -15,6 +15,7 @@
   --diamond-button-bg: white;
   --diamond-button-hover-bg: #F4856E;
   --diamond-size: 40px;
+  --light-text-size: 18px;
 }
 
 @keyframes fadein {
@@ -142,8 +143,8 @@ body {
 }
 
 .light-text {
-  font-family: 'Noto Sans JP Light';
-  font-size: 18px;
+  font-family: 'Noto Sans JP Light' !important;
+  font-size: var(--light-text-size);
 }
 
 .timetable-item {
@@ -277,6 +278,7 @@ body {
   text-align: center;
   position: absolute;
 }
+
 body {
   user-select: none;
 }
