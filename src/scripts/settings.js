@@ -35,7 +35,6 @@ function getFirstMonday() {
   return date.getDate()
 }
 
-
 // Determine Week A/B (Help from Joshua Koh)
 
 let today = new Date();
