@@ -2,6 +2,20 @@ const ical = require('node-ical')
 
 console.log(getFirstMonday())
 
+// Format of timetable data
+/**
+ * <week>:
+ *    1: Array<PeriodData>
+ *    2: Array<PeriodData>
+ *    ...
+ */
+
+let timetableData = {
+  A: {},
+  B: {}
+}
+
+
 function fileSelected(event) {
   file = event.target.files[0]
   
@@ -12,11 +26,10 @@ function fileSelected(event) {
 
   const events = ical.sync.parseFile(file.path)
   for (const event of Object.values(events)) {
-    console.log(
-        event.summary,
-        event.description,
-        event.start.toISOString() 
-    )
+    let timestamp = new Date(event.start.toISOString())
+    let timestampWeek = week(timestamp)
+
+    timetableData[timestampWeek][timestamp.getDay().toString()] = 'filled'
   }
 
   console.log(week(new Date()))
