@@ -11,10 +11,9 @@ function fileSelected(event) {
   const events = ical.sync.parseFile(file.path)
   for (const event of Object.values(events)) {
     console.log(
-        'Summary: ' + event.summary +
-        '\nDescription: ' + event.description +
-        '\nStart Date: ' + event.start.toISOString() +
-        '\n'
+        event.summary,
+        event.description,
+        event.start.toISOString() 
     );
   };
 }
