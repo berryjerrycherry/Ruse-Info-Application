@@ -10,7 +10,8 @@ const createWindow = async () => {
     maxWidth: 1600,
     maxHeight: 900,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false
     }
   })
   mainWindow.setTitle('Ruse Info App')

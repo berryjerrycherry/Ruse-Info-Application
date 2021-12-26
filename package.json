@@ -35,7 +35,7 @@
     "electron-packager": "^15.4.0"
   },
   "dependencies": {
-    "custom-electron-titlebar": "^3.2.10",
-    "electron-winstaller": "^5.0.0"
+    "electron-winstaller": "^5.0.0",
+    "node-ical": "^0.14.1"
   }
 }
