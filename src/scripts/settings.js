@@ -18,10 +18,13 @@ function fileSelected(event) {
         event.start.toISOString() 
     )
   }
+
+  console.log(week(new Date()))
 }
 
 document.getElementById('file').onchange = fileSelected
 
+// Gets the date of the first monday in the current year
 function getFirstMonday() {
   let date = new Date()
   date.setMonth(0)
@@ -35,14 +38,17 @@ function getFirstMonday() {
   return date.getDate()
 }
 
-// Determine Week A/B (Help from Joshua Koh)
+function daysFrom(date1, date2) {
+  return (date1.getTime() - date2.getTime()) / (1000 * 3600 * 24)
+}
 
-let today = new Date();
+// Determine Week A/B (Help from Joshua Koh)
 let jan1 = new Date();
 jan1.setMonth(0);
 jan1.setDate(1);
 jan1.setHours(0,0,0,0);
 
-function week() {
-  return (Math.floor((daysFrom(jan1, today) - 2) / 7) % 2) ? 'A' : 'B';
+// Function to determine whether the day is in week A or week B
+function week(day) {
+  return (Math.floor((daysFrom(jan1, day) - getFirstMonday()) / 7) % 2) ? 'A' : 'B';
 }
