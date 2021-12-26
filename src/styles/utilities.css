@@ -1,0 +1,139 @@
+:root {
+  --primary-bg-color: #1C1E20;
+  --secondary-bg-color: #272B2E;
+  --primary-text-color: white;
+  --secondary-text-color: #9F9F9F;
+  --rounding: 15px;
+  --text-size: 1rem;
+  --subtitle-text-size: 26px;
+  --small-text-size: 14px;
+  --title-text-size: 2.5rem;
+}
+
+@font-face {
+  font-family: 'Noto Sans JP Bold';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Bold.otf);
+}
+
+@font-face {
+  font-family: 'Noto Sans JP Medium';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Medium.otf);
+}
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Regular.otf);
+}
+
+@font-face {
+  font-family: 'Noto Sans JP Thin';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Thin.otf);
+}
+
+
+@font-face {
+  font-family: 'Noto Sans JP Light';
+  src: url(../assets/fonts/Noto_Sans/NotoSansJP-Light.otf);
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  animation: fadein .25s linear forwards;
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+.title {
+  font-family: 'Noto Sans JP Bold';
+  color: var(--primary-text-color);
+  font-size: var(--title-text-size);
+}
+
+.subtitle {
+  font-family: 'Noto Sans JP Bold';
+  color: var(--primary-text-color);
+  font-size: var(--subtitle-text-size);
+}
+
+.smaller-subtitle {
+  font-family: 'Noto Sans JP Medium';
+  color: var(--primary-text-color);
+  font-size: 22px;
+}
+.text {
+  color: var(--primary-text-color);
+  font-family: 'Noto Sans JP';
+  font-size: var(--text-size);
+}
+
+#main {
+  margin-left: 5%;
+}
+
+#back-button {
+  width: 50px;
+  height: 50px;
+}
+
+#back-button::selection {
+  color: none;
+  background: none;
+}
+
+#back-button:hover {
+  filter: brightness(80%);
+}
+
+.subtitle::selection {
+  color: none;
+  background: none;
+}
+
+.text::selection {
+  color: none;
+  background: none;
+}
+body {
+  user-select: none;
+}
+
+
+.split {
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+
+.left {
+  left: 0;
+  background-color: #272B2E;
+  border-radius: 5px
+}
+
+.menu-nav {
+       
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.three-dots:after {
+  cursor: pointer;
+  color: #444;
+  content: '\2807';
+  font-size: 20px;
+  padding: 0 5px;
+  position:absolute;
+  right: 2%
+
+}
+
