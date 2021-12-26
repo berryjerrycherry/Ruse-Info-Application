@@ -10,20 +10,20 @@
     "package-win": "electron-packager . markdownelectron  --icon=icon/language_markdown_outline_icon_139425.ico --overwrite --asar --platform=win32 --arch=ia32  --prune=true --out=buildsep --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"MarkDown\"",
     "build-installer": "electron-builder"
   },
-"build":{
-  "appId": "ruse-dashboard",
-  "win":{
-    "target": ["nsis"],
-    "icon": "./src/assets/dashboard-logo.ico"
+  "build": {
+    "appId": "ruse-dashboard",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "./src/assets/dashboard-logo.ico"
+    },
+    "nsis": {
+      "uninstallDisplayName": "Ruse Dashboard",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
-  "nsis": {
-    "uninstallDisplayName":"Ruse Dashboard",
-    "oneClick": false,
-    "allowToChangeInstallationDirectory": true
-  }
-},
-
-
   "contributors": [
     "Jerry Sun",
     "Raymond Zhu"
@@ -35,6 +35,7 @@
     "electron-packager": "^15.4.0"
   },
   "dependencies": {
-    "electron-winstaller": "^5.0.0"
+    "electron-winstaller": "^5.0.0",
+    "node-ical": "^0.14.1"
   }
 }

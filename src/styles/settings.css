@@ -103,6 +103,7 @@ body {
 }
 
 #file-input-text {
+  cursor: pointer;
   padding: 10px;
   background-color: var(--secondary-bg-color);
   color: var(--primary-text-color);
@@ -112,9 +113,11 @@ body {
 }
 
 #file-input-text:hover {
+  cursor: pointer;
   background-color: var(--button-hover-bg);
 }
 
 #file-input-text:active {
+  cursor: pointer;
   background-color: var(--button-click-bg);
 }

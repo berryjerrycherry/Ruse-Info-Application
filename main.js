@@ -9,6 +9,10 @@ const createWindow = async () => {
     minHeight: 650,
     maxWidth: 1600,
     maxHeight: 900,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false
+    }
   })
   mainWindow.setTitle('Ruse Info App')
   mainWindow.setMenuBarVisibility(false)
