@@ -8,7 +8,8 @@
   "scripts": {
     "start": "electron .",
     "package-win": "electron-packager . markdownelectron  --icon=icon/language_markdown_outline_icon_139425.ico --overwrite --asar --platform=win32 --arch=ia32  --prune=true --out=buildsep --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"MarkDown\"",
-    "build-installer": "electron-builder"
+    "build-installer": "electron-builder",
+    "build": "electron-packager . Ruse Dashboard --platform=darwin --arch=x64 --version0.3.1 --overwrite"
   },
   "build": {
     "appId": "ruse-dashboard",
