@@ -1,4 +1,8 @@
 const ical = require('node-ical')
+const storage = require('electron-json-storage')
+const os = require('os')
+
+import { week, getFirstMonday } from './util.js'
 
 console.log(getFirstMonday())
 
@@ -13,6 +17,7 @@ console.log(getFirstMonday())
  *  summary : string
  *  desc: string
  *  timestamp: timestamp as iso string
+ *  location: string
  */
 
 let timetableData = {
@@ -32,9 +37,10 @@ let timetableData = {
   }
 }
 
+storage.setDataPath(os.tmpdir())
 
 function fileSelected(event) {
-  file = event.target.files[0]
+  let file = event.target.files[0]
   
   if (!file.path.endsWith('.ics')) {
     document.getElementById('timetable-status').innerText = 'Incorrect timetable format'
@@ -55,41 +61,15 @@ function fileSelected(event) {
       timetableDayData.push({
         name: event.summary,
         desc: event.description,
-        timestamp: event.start.toISOString() 
+        timestamp: event.start.toISOString(),
+        location: event.location
       })
     }
   }
 
-  console.log(week(new Date()))
+  storage.set('timetableData', timetableData)
+
+  document.getElementById('timetable-status').innerText = `Timetable selected: ${file.name}`
 }
 
 document.getElementById('file').onchange = fileSelected
-
-// Gets the date of the first monday in the current year
-function getFirstMonday() {
-  let date = new Date()
-  date.setMonth(0)
-  date.setDate(1)
-  date.setHours(0, 0, 0, 0)
-
-  while (date.getDay() !== 1) {
-    date.setDate(date.getDate() + 1)
-  }
-
-  return date.getDate()
-}
-
-function daysFrom(date1, date2) {
-  return (date1.getTime() - date2.getTime()) / (1000 * 3600 * 24)
-}
-
-// Determine Week A/B (Help from Joshua Koh)
-let jan1 = new Date();
-jan1.setMonth(0);
-jan1.setDate(1);
-jan1.setHours(0,0,0,0);
-
-// Function to determine whether the day is in week A or week B
-function week(day) {
-  return (Math.floor((daysFrom(jan1, day) - getFirstMonday()) / 7) % 2) ? 'A' : 'B';
-}

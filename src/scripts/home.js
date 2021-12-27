@@ -1,3 +1,9 @@
+const storage = require('electron-json-storage')
+const os = require('os')
+import { week } from './util.js'
+
+storage.setDataPath(os.tmpdir())
+
 setInterval(updateWeather(), 600 * 1000)
 
 function updateWeather() {
@@ -18,7 +24,7 @@ function updateWeather() {
 
 updateWeather()
 
-setInterval(updateDayOfWeek, 1000);
+setInterval(updateDayOfWeek, 15000);
 
 function updateDayOfWeek() {
   const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -29,7 +35,7 @@ function updateDayOfWeek() {
 
 updateDayOfWeek()
 
-setInterval(updateDate, 1000);
+setInterval(updateDate, 15000);
 
 function updateDate() {
   const timeNow = new Date()
@@ -41,7 +47,7 @@ function updateDate() {
   const m = new Date()
   let month = months[m.getMonth()]
 
-  finaldate = `${day}/${month}/${year}`
+  let finaldate = `${day}/${month}/${year}`
   document.getElementById("date").innerText = finaldate
 }
 
@@ -77,3 +83,81 @@ function updateTimeDisplay() {
 }
 
 updateTimeDisplay();
+
+setInterval(updateClassesWidget, 10000)
+
+function updateClassesWidget() {
+  let today = new Date()
+  let timetableData = storage.getSync('timetableData')
+  let currentWeekLetter = week(today)
+
+  timetableData[currentWeekLetter][today.getDay().toString()].forEach((period, i) => {
+    let timestamp = new Date(period.timestamp)
+    // Format time and subject
+    document.getElementById(`class-${i + 1}`).innerText = `${timestamp.getHours()}:${timestamp.getMinutes().toString().length < 2 ? `0${timestamp.getMinutes()}`: timestamp.getMinutes()} · ${period.name.slice(0, period.name.indexOf(':'))}`
+    // Format room location
+    document.getElementById(`room-${i + 1}`).innerText = period.location.slice(period.location.indexOf(':') + 1, period.location.length).trim()
+  })
+}
+
+updateClassesWidget()
+
+
+setInterval(updateNextClassWidget, 1000)
+
+function updateNextClassWidget() {
+  let today = new Date()
+  let timetableData = storage.getSync('timetableData')
+  let currentWeekLetter = week(today)
+  let dayOfWeek = today.getDay()
+
+  if (dayOfWeek == 6 || dayOfWeek == 7) {
+
+  } else {
+    let closestPeriod = 1
+    let periods = timetableData[currentWeekLetter][dayOfWeek.toString()]
+    let now = Date.now()
+
+    periods.forEach((period, i) => {
+      let periodTimestamp = new Date(period.timestamp).getTime()
+
+      if (now > periodTimestamp) {
+        closestPeriod = i + 2;
+      } else if (now < periodTimestamp) {
+        closestPeriod = i + 1;
+      } 
+    })
+
+    if (closestPeriod > 5) {
+      let periods = timetableData[currentWeekLetter][(dayOfWeek + 1).toString()]
+
+
+      let period = periods['1']
+      let periodTimestamp = new Date(period.timestamp).getTime()
+      let now = Date.now()
+
+      let minutes = Math.floor((periodTimestamp - now) / 1000 / 60)
+      document.getElementById('next-class-timer').innerText = `${minutes}:${periodTimestamp - minutes * 60 * 1000}`
+      document.getElementById('next-class-text').innerText = period.name.replace(':', '·')
+
+      let formattedTeacherName = (period.desc.slice(period.desc.indexOf(':') + 1, period.desc.length).trim())
+
+      document.getElementById('next-class-teacher').innerText = formattedTeacherName.slice(formattedTeacherName, formattedTeacherName.indexOf('\n'))
+      document.getElementById('next-class-room').innerText = period.location.slice(period.location.indexOf(':') + 1, period.location.length).trim()
+    } else {
+      let period = periods[closestPeriod.toString()]
+      let periodTimestamp = new Date(period.timestamp).getTime()
+      let now = Date.now()
+      let minutes = Math.floor((periodTimestamp - now) / 1000 / 60)
+      document.getElementById('next-class-timer').innerText = `${minutes}:${periodTimestamp - minutes * 60 * 1000}`
+      document.getElementById('next-class-text').innerText = period.name.replace(':', '·')
+
+      let formattedTeacherName = (period.desc.slice(period.desc.indexOf(':') + 1, period.desc.length).trim())
+
+      document.getElementById('next-class-teacher').innerText = formattedTeacherName.slice(formattedTeacherName, formattedTeacherName.indexOf('\n'))
+      document.getElementById('next-class-room').innerText = period.location.slice(period.location.indexOf(':') + 1, period.location.length).trim()
+    }
+  }
+}
+
+updateNextClassWidget()
