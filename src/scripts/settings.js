@@ -8,11 +8,28 @@ console.log(getFirstMonday())
  *    1: Array<PeriodData>
  *    2: Array<PeriodData>
  *    ...
+ * 
+ * PeriodData:
+ *  summary : string
+ *  desc: string
+ *  timestamp: timestamp as iso string
  */
 
 let timetableData = {
-  A: {},
-  B: {}
+  A: {
+    '1': [],
+    '2': [],
+    '3': [],
+    '4': [],
+    '5': []
+  },
+  B: {
+    '1': [],
+    '2': [],
+    '3': [],
+    '4': [],
+    '5': []
+  }
 }
 
 
@@ -29,7 +46,18 @@ function fileSelected(event) {
     let timestamp = new Date(event.start.toISOString())
     let timestampWeek = week(timestamp)
 
-    timetableData[timestampWeek][timestamp.getDay().toString()] = 'filled'
+    let timetableDayData = timetableData[timestampWeek][timestamp.getDay().toString()]
+    let alreadyExists = timetableDayData.find(data => data.timestamp == event.start.toISOString())
+
+    // Limit each array to a length of 5 periods
+    if (timetableDayData.length < 5 && !alreadyExists) {
+      // Push timetable data
+      timetableDayData.push({
+        name: event.summary,
+        desc: event.description,
+        timestamp: event.start.toISOString() 
+      })
+    }
   }
 
   console.log(week(new Date()))
