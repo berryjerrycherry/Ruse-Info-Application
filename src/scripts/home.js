@@ -130,14 +130,11 @@ function updateNextClassWidget() {
 
     if (closestPeriod > 5) {
       let periods = timetableData[currentWeekLetter][(dayOfWeek + 1).toString()]
-
-
-      let period = periods['1']
+      let period = periods[0]
       let periodTimestamp = new Date(period.timestamp).getTime()
       let now = Date.now()
-
-      let minutes = Math.floor((periodTimestamp - now) / 1000 / 60)
-      document.getElementById('next-class-timer').innerText = `${minutes}:${periodTimestamp - minutes * 60 * 1000}`
+      
+      document.getElementById('next-class-timer').innerText = formatTime(periodTimestamp - now)
       document.getElementById('next-class-text').innerText = period.name.replace(':', '·')
 
       let formattedTeacherName = (period.desc.slice(period.desc.indexOf(':') + 1, period.desc.length).trim())
@@ -148,8 +145,8 @@ function updateNextClassWidget() {
       let period = periods[closestPeriod.toString()]
       let periodTimestamp = new Date(period.timestamp).getTime()
       let now = Date.now()
-      let minutes = Math.floor((periodTimestamp - now) / 1000 / 60)
-      document.getElementById('next-class-timer').innerText = `${minutes}:${periodTimestamp - minutes * 60 * 1000}`
+
+      document.getElementById('next-class-timer').innerText = formatTime(periodTimestamp - now)
       document.getElementById('next-class-text').innerText = period.name.replace(':', '·')
 
       let formattedTeacherName = (period.desc.slice(period.desc.indexOf(':') + 1, period.desc.length).trim())
@@ -161,3 +158,10 @@ function updateNextClassWidget() {
 }
 
 updateNextClassWidget()
+
+function formatTime(ms) {
+  let time = new Date(ms)
+  let mins = time.getMinutes().toString()
+  let secs = time.getSeconds().toString()
+  return `${time.getHours() == 0 ? '' : `${time.getHours()}:`}${mins.length < 2 ? `0${mins}` : mins}:${secs.length < 2 ? `0${secs}` : secs}`
+}
