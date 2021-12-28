@@ -112,11 +112,16 @@ function updateNextClassWidget() {
 
   if (dayOfWeek == 6 || dayOfWeek == 7) {
     // If its Saturday or Sunday
+    let nextMondayPeriods = timetableData[invertWeek(currentWeekLetter)]['1']
+
+    let period = nextMondayPeriods[0]
+    let periodTimestamp = incrementDays(dayOfWeek == 6 ? 2 : 1) + getDatesTime(new Date(period.timestamp))
+    updatePeriod(period, periodTimestamp)
   } else {
     // If its a weekday
 
     // Get today's periods
-    let todaysPeriods = timetableData[currentWeekLetter][dayOfWeek]
+    let todaysPeriods = timetableData[currentWeekLetter][dayOfWeek.toString()]
     let lastPeriod = todaysPeriods[todaysPeriods.length - 1]
 
     let todaysTime = getDatesTime(new Date())
@@ -125,9 +130,35 @@ function updateNextClassWidget() {
     // Check if the current time is later than the start of the last period
     if (todaysTime > lastPeriodTime) {
       // If the current time is later than the start of the last period
+      if (dayOfWeek == 5) {
+        // If today is a friday and lessons have already ended
+        let nextMondayPeriods = timetableData[invertWeek(currentWeekLetter)]['1']
 
+        let period = nextMondayPeriods[0]
+        let periodTimestamp = incrementDays(3) + getDatesTime(new Date(period.timestamp))
+        updatePeriod(period, periodTimestamp)
+      } else {
+        // If it is the end of another weekday and lessons have already ended
+
+        let tmrwPeriods = timetableData[currentWeekLetter][(dayOfWeek + 1).toString()]
+        
+        let period = tmrwPeriods[0]
+        let periodTimestamp = getTommorowStart() + getDatesTime(new Date(period.timestamp))
+        updatePeriod(period, periodTimestamp)
+      }
     } else {
-      // If the current time is before the start of the last period
+      let nextPeriodNumber = 0
+      todaysPeriods.forEach((period, i) => {
+        let periodTime = getDatesTime(new Date(period.timestamp))
+        if (todaysTime < periodTime) {
+          nextPeriodNumber = i
+        }
+      })
+
+      let period = todaysPeriods[nextPeriodNumber]
+      let periodTimestamp = getTodayStart() + getDatesTime(new Date(period.timestamp))
+
+      updatePeriod(period, periodTimestamp)
     }
   }
 }
@@ -136,24 +167,44 @@ updateNextClassWidget()
 
 function formatTime(ms) {
   let time = new Date(ms)
+  let hours = Math.floor(time / 60 / 60 / 1000).toString()
   let mins = time.getMinutes().toString()
   let secs = time.getSeconds().toString()
-  return `${time.getHours() == 0 ? '' : `${time.getHours()}:`}${mins.length < 2 ? `0${mins}` : mins}:${secs.length < 2 ? `0${secs}` : secs}`
+  return `${hours == '0' ? '' : `${hours}:`}${mins.length < 2 ? `0${mins}` : mins}:${secs.length < 2 ? `0${secs}` : secs}`
 }
 
-function tommorow() {
+function getTommorowStart() {
   let today = new Date()
   today.setDate(today.getDate() + 1)
 
-  return today
+  return today.setHours(0, 0, 0, 0)
+}
+
+function incrementDays(increment) {
+  let today = new Date()
+  today.setDate(today.getDate() + increment)
+
+  return today.setHours(0, 0, 0, 0)
 }
 
 function updatePeriod(period, periodTimestamp) {
-  document.getElementById('next-class-timer').innerText = formatTime(periodTimestamp - now)
+  document.getElementById('next-class-timer').innerText = formatTime(periodTimestamp - Date.now())
   document.getElementById('next-class-text').innerText = period.name.replace(':', '·')
 
   let formattedTeacherName = (period.desc.slice(period.desc.indexOf(':') + 1, period.desc.length).trim())
 
   document.getElementById('next-class-teacher').innerText = formattedTeacherName.slice(formattedTeacherName, formattedTeacherName.indexOf('\n'))
   document.getElementById('next-class-room').innerText = period.location.slice(period.location.indexOf(':') + 1, period.location.length).trim()
+}
+
+function getTodayStart() {
+  return (new Date()).setHours(0, 0, 0, 0)
+}
+
+function invertWeek(week) {
+  if (week = 'A') {
+    return 'B'
+  } else {
+    return 'A'
+  }
 }
