@@ -1,6 +1,6 @@
 const storage = require('electron-json-storage')
 const os = require('os')
-import { week } from './util.js'
+import { week, getDatesTime } from './util.js'
 
 storage.setDataPath(os.tmpdir())
 
@@ -102,7 +102,6 @@ function updateClassesWidget() {
 
 updateClassesWidget()
 
-
 setInterval(updateNextClassWidget, 1000)
 
 function updateNextClassWidget() {
@@ -112,47 +111,23 @@ function updateNextClassWidget() {
   let dayOfWeek = today.getDay()
 
   if (dayOfWeek == 6 || dayOfWeek == 7) {
-
+    // If its Saturday or Sunday
   } else {
-    let closestPeriod = 1
-    let periods = timetableData[currentWeekLetter][dayOfWeek.toString()]
-    let now = Date.now()
+    // If its a weekday
 
-    periods.forEach((period, i) => {
-      let periodTimestamp = new Date(period.timestamp).getTime()
+    // Get today's periods
+    let todaysPeriods = timetableData[currentWeekLetter][dayOfWeek]
+    let lastPeriod = todaysPeriods[todaysPeriods.length - 1]
 
-      if (now > periodTimestamp) {
-        closestPeriod = i + 2;
-      } else if (now < periodTimestamp) {
-        closestPeriod = i + 1;
-      } 
-    })
+    let todaysTime = getDatesTime(new Date())
+    let lastPeriodTime = getDatesTime(new Date(lastPeriod.timestamp))
 
-    if (closestPeriod > 5) {
-      let periods = timetableData[currentWeekLetter][(dayOfWeek + 1).toString()]
-      let period = periods[0]
-      let periodTimestamp = new Date(period.timestamp).getTime()
-      let now = Date.now()
-      
-      document.getElementById('next-class-timer').innerText = formatTime(periodTimestamp - now)
-      document.getElementById('next-class-text').innerText = period.name.replace(':', '·')
+    // Check if the current time is later than the start of the last period
+    if (todaysTime > lastPeriodTime) {
+      // If the current time is later than the start of the last period
 
-      let formattedTeacherName = (period.desc.slice(period.desc.indexOf(':') + 1, period.desc.length).trim())
-
-      document.getElementById('next-class-teacher').innerText = formattedTeacherName.slice(formattedTeacherName, formattedTeacherName.indexOf('\n'))
-      document.getElementById('next-class-room').innerText = period.location.slice(period.location.indexOf(':') + 1, period.location.length).trim()
     } else {
-      let period = periods[closestPeriod.toString()]
-      let periodTimestamp = new Date(period.timestamp).getTime()
-      let now = Date.now()
-
-      document.getElementById('next-class-timer').innerText = formatTime(periodTimestamp - now)
-      document.getElementById('next-class-text').innerText = period.name.replace(':', '·')
-
-      let formattedTeacherName = (period.desc.slice(period.desc.indexOf(':') + 1, period.desc.length).trim())
-
-      document.getElementById('next-class-teacher').innerText = formattedTeacherName.slice(formattedTeacherName, formattedTeacherName.indexOf('\n'))
-      document.getElementById('next-class-room').innerText = period.location.slice(period.location.indexOf(':') + 1, period.location.length).trim()
+      // If the current time is before the start of the last period
     }
   }
 }
@@ -164,4 +139,21 @@ function formatTime(ms) {
   let mins = time.getMinutes().toString()
   let secs = time.getSeconds().toString()
   return `${time.getHours() == 0 ? '' : `${time.getHours()}:`}${mins.length < 2 ? `0${mins}` : mins}:${secs.length < 2 ? `0${secs}` : secs}`
+}
+
+function tommorow() {
+  let today = new Date()
+  today.setDate(today.getDate() + 1)
+
+  return today
+}
+
+function updatePeriod(period, periodTimestamp) {
+  document.getElementById('next-class-timer').innerText = formatTime(periodTimestamp - now)
+  document.getElementById('next-class-text').innerText = period.name.replace(':', '·')
+
+  let formattedTeacherName = (period.desc.slice(period.desc.indexOf(':') + 1, period.desc.length).trim())
+
+  document.getElementById('next-class-teacher').innerText = formattedTeacherName.slice(formattedTeacherName, formattedTeacherName.indexOf('\n'))
+  document.getElementById('next-class-room').innerText = period.location.slice(period.location.indexOf(':') + 1, period.location.length).trim()
 }

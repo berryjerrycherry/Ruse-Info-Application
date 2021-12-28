@@ -16,6 +16,16 @@
   --diamond-button-hover-bg: #F4856E;
   --diamond-size: 40px;
   --light-text-size: 18px;
+  --next-class-class-text-size: 22px;
+}
+
+* {
+  text-rendering: optimizeLegibility;
+}
+
+*::selection {
+  color: none;
+  background: none;
 }
 
 @keyframes fadein {
@@ -74,6 +84,7 @@ body {
   color: none;
   background: none;
 }
+
 .small-text::selection {
   color: none;
   background: none;
@@ -116,6 +127,7 @@ body {
 }
 
 #next-class-text {
+  font-size: var(--next-class-class-text-size) !important;
   font-family: 'Noto Sans JP' !important;
 }
 

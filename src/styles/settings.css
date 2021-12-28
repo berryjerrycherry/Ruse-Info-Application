@@ -121,3 +121,7 @@ body {
   cursor: pointer;
   background-color: var(--button-click-bg);
 }
+
+* {
+  text-rendering: optimizeLegibility;
+}

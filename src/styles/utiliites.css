@@ -271,3 +271,6 @@ body {
   box-shadow: none;
 }
 
+* {
+  text-rendering: optimizeLegibility;
+}
