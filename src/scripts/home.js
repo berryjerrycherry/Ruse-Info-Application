@@ -202,7 +202,7 @@ function getTodayStart() {
 }
 
 function invertWeek(week) {
-  if (week = 'A') {
+  if (week == 'A') {
     return 'B'
   } else {
     return 'A'
