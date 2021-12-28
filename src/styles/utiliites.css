@@ -231,6 +231,8 @@ body {
   box-shadow: inset 0px 0px 0px 2px #e3e3e4; 
   border-radius: 50%; 
   position: relative;  
+  bottom: -15px;
+  right: 10px;
   cursor: pointer;
   transition: background 0.5s;
 }
