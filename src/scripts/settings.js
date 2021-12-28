@@ -39,6 +39,12 @@ let timetableData = {
 
 storage.setDataPath(os.tmpdir())
 
+
+if (storage.getSync('timetableData')) {
+  document.getElementById('timetable-status').innerText = `Timetable already added`
+}
+
+
 function fileSelected(event) {
   let file = event.target.files[0]
   

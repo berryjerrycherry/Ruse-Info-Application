@@ -151,7 +151,7 @@ function updateNextClassWidget() {
       todaysPeriods.forEach((period, i) => {
         let periodTime = getDatesTime(new Date(period.timestamp))
         if (todaysTime < periodTime) {
-          nextPeriodNumber = i
+          nextPeriodNumber = i - 2
         }
       })
 
