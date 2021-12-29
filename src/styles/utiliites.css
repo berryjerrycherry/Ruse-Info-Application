@@ -276,3 +276,21 @@ body {
 * {
   text-rendering: optimizeLegibility;
 }
+
+#maintextbox {
+  border: none;  
+  border-radius: var(--rounding);
+  position: absolute;
+  height: 78%;
+  width: 95%;
+  top: 4%;
+  text-align: left;  
+  margin-top: 7%;
+  margin-left: 2%;
+  margin-right: 2%;
+  background-color: var(--primary-bg-color);
+  color: white;
+  font-family: 'Noto Sans JP';
+  font-size: var(--text-size);
+  resize: none;
+  }
