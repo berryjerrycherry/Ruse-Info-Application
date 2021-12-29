@@ -281,7 +281,7 @@ body {
   border: none;  
   border-radius: var(--rounding);
   position: absolute;
-  height: 78%;
+  height: 71%;
   width: 95%;
   top: 4%;
   text-align: left;  
@@ -290,7 +290,43 @@ body {
   margin-right: 2%;
   background-color: var(--primary-bg-color);
   color: white;
-  font-family: 'Noto Sans JP';
+  font-family: 'Noto Sans JP Light';
   font-size: var(--text-size);
   resize: none;
+  outline-color: black;
+  outline-width: 1px;
   }
+  #title {
+    border: none;  
+    border-radius: var(--rounding);
+    position: absolute;
+    height: 5%;
+    width: 92%;
+    top: -4%;
+    text-align: left;  
+    margin-top: 7%;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: var(--primary-bg-color);
+    color: white;
+    font-family: 'Noto Sans JP Bold';
+    font-size: var(--text-size);
+    resize: none;
+    outline-color: black;
+    outline-width: 1px;
+    }
+    #save-button {
+      background-color: #333536;
+      color: var(--primary-text-color);
+      font-family: 'Noto Sans JP';
+      font-size: var(--text-size);
+      outline: none;
+      border: none;
+      position: absolute;
+      width: 12%;
+      height: 10%;
+      border-radius: 15%;
+      bottom: 0.5%;
+      right: 2%;
+      cursor: pointer;
+    }
