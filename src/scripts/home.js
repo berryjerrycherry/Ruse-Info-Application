@@ -93,6 +93,7 @@ function updateClassesWidget() {
 
   timetableData[currentWeekLetter][today.getDay().toString()].forEach((period, i) => {
     let timestamp = new Date(period.timestamp)
+
     // Format time and subject
     document.getElementById(`class-${i + 1}`).innerText = `${timestamp.getHours()}:${timestamp.getMinutes().toString().length < 2 ? `0${timestamp.getMinutes()}`: timestamp.getMinutes()} · ${period.name.slice(0, period.name.indexOf(':'))}`
     // Format room location
@@ -147,15 +148,15 @@ function updateNextClassWidget() {
         updatePeriod(period, periodTimestamp)
       }
     } else {
-      let nextPeriodNumber = 0
-      todaysPeriods.forEach((period, i) => {
-        let periodTime = getDatesTime(new Date(period.timestamp))
-        if (todaysTime < periodTime) {
-          nextPeriodNumber = i - 2
+      let nextPeriods = todaysPeriods.map(p => {
+        let periodTimestamp = getDatesTime(new Date(p.timestamp))
+        let now = getDatesTime(new Date())
+        if (now < periodTimestamp) {
+          return p
         }
-      })
+      }).filter(t => t)
 
-      let period = todaysPeriods[nextPeriodNumber]
+      let period = nextPeriods[0]
       let periodTimestamp = getTodayStart() + getDatesTime(new Date(period.timestamp))
 
       updatePeriod(period, periodTimestamp)
@@ -189,6 +190,9 @@ function incrementDays(increment) {
 
 function updatePeriod(period, periodTimestamp) {
   document.getElementById('next-class-timer').innerText = formatTime(periodTimestamp - Date.now())
+  if (period.name.length > 28) {
+    document.getElementById('next-class-text').style.setProperty('font-size', '16px', 'important')
+  }
   document.getElementById('next-class-text').innerText = period.name.replace(':', '·')
 
   let formattedTeacherName = (period.desc.slice(period.desc.indexOf(':') + 1, period.desc.length).trim())

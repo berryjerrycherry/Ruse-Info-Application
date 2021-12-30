@@ -76,6 +76,7 @@ function fileSelected(event) {
   storage.set('timetableData', timetableData)
 
   document.getElementById('timetable-status').innerText = `Timetable selected: ${file.name}`
+  console.log(timetableData)
 }
 
 document.getElementById('file').onchange = fileSelected
