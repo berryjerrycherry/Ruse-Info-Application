@@ -1,6 +1,5 @@
 document.getElementById("button-text").onclick = function() {loadPage()};
 document.getElementById("closebutton").onclick = function() {closePage()};
-document.getElementById("save-button").onclick = function() {saveText()};
 document.getElementById("back-button").onclick = function() {rememberSave()};
 document.getElementById("closebutton2").onclick = function() {closePage2()};
 
@@ -10,6 +9,7 @@ let button = document.getElementById('save-button')
 
 button.onclick = () => {
   btnClicked = true
+  saveText()
 }
 
 
