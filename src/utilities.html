@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/utiliites.css">
+    <link rel="stylesheet" href="./styles/utilities.css">
     <title>Utilities</title>
   </head>
   <body>
+    <div id = "warningmessage"> 
+      <p class="text" id = "warning" >Are you sure you want to quit without saving?</p>
+      <button type="button" class="mainbutton" id="yes">Yes</button>
+      <div id = "closebutton2" class="close"></div>
+    </div>
     <div id="rightframe" class="split2 right drop-shadow">
       <div class="rounded-card" id="note">
         <div id = "closebutton" class="close"></div>
         <textarea id="title" placeholder="Name your title..."></textarea>
         <textarea id="maintextbox" placeholder="Start writing your note here..."></textarea>
-        <button type="button" id = "save-button">Save</button>
+        <button type="button" class="mainbutton" id="save-button">Save</button>
         <button type="button" id = "test-button">TEST</button>
     </div>
   </div>

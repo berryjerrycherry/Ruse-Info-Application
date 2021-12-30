@@ -2,6 +2,7 @@ document.getElementById("button-text").onclick = function() {loadPage()};
 document.getElementById("closebutton").onclick = function() {closePage()};
 document.getElementById("save-button").onclick = function() {saveText()};
 document.getElementById("test-button").onclick = function() {rememberSave()};
+document.getElementById("closebutton2").onclick = function() {closePage2()};
 
 let btnClicked = false
 
@@ -13,7 +14,9 @@ button.onclick = () => {
 
 
 
-
+function closePage2() {
+  document.getElementById("warningmessage").style.display = "none"
+}
 
 
 function loadPage() {
@@ -32,7 +35,7 @@ maintextbox.value = localStorage.getItem("notes")
 function rememberSave() {
   let length = document.getElementById("maintextbox").value.length;
   if (length > 0 && btnClicked == false) {
-    console.log(length)
+    document.getElementById("warningmessage").style.display = "block"
   }
 }
 
