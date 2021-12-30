@@ -1,7 +1,7 @@
 document.getElementById("button-text").onclick = function() {loadPage()};
 document.getElementById("closebutton").onclick = function() {closePage()};
 document.getElementById("save-button").onclick = function() {saveText()};
-document.getElementById("test-button").onclick = function() {rememberSave()};
+document.getElementById("back-button").onclick = function() {rememberSave()};
 document.getElementById("closebutton2").onclick = function() {closePage2()};
 
 let btnClicked = false
@@ -27,14 +27,17 @@ function closePage() {
 }
 
 function saveText() {
-let maintextbox = document.getElementById("maintextbox").value;
-localStorage.setItem("notes", maintextbox)
+    let maintextbox = document.getElementById("maintextbox").value;
+    localStorage.setItem("notes", maintextbox)
 }
 maintextbox.value = localStorage.getItem("notes")
 
 function rememberSave() {
   let length = document.getElementById("maintextbox").value.length;
-  if (length > 0 && btnClicked == false) {
+  if (btnClicked == true){
+  history.go(-1);
+  }
+  else if (length > 0 && btnClicked == false) {
     document.getElementById("warningmessage").style.display = "block"
   }
 }
