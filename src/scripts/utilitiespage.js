@@ -1,6 +1,20 @@
 document.getElementById("button-text").onclick = function() {loadPage()};
 document.getElementById("closebutton").onclick = function() {closePage()};
 document.getElementById("save-button").onclick = function() {saveText()};
+document.getElementById("test-button").onclick = function() {rememberSave()};
+
+let btnClicked = false
+
+let button = document.getElementById('save-button')
+
+button.onclick = () => {
+  btnClicked = true
+}
+
+
+
+
+
 
 function loadPage() {
   document.getElementById("note").style.display = "block"
@@ -16,8 +30,9 @@ localStorage.setItem("notes", maintextbox)
 maintextbox.value = localStorage.getItem("notes")
 
 function rememberSave() {
-  let length = maintextbox.value.length
-  if (length > 0) {
-    console.log()
+  let length = document.getElementById("maintextbox").value.length;
+  if (length > 0 && btnClicked == false) {
+    console.log(length)
   }
 }
+
