@@ -2,7 +2,7 @@ document.getElementById("button-text").onclick = function() {loadPage()};
 document.getElementById("closebutton").onclick = function() {closePage()};
 document.getElementById("back-button").onclick = function() {rememberSave()};
 document.getElementById("closebutton2").onclick = function() {closePage2()};
-
+document.getElementById("yes").onclick = function() {continueExit()};
 let btnClicked = false
 
 let button = document.getElementById('save-button')
@@ -37,8 +37,14 @@ function rememberSave() {
   if (btnClicked == true){
   history.go(-1);
   }
+  else if (length == 0){
+    history.go(-1);
+  }
   else if (length > 0 && btnClicked == false) {
     document.getElementById("warningmessage").style.display = "block"
   }
 }
 
+function continueExit() {
+  history.go(-1);
+}
