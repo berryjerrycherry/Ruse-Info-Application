@@ -23,7 +23,11 @@ button.onclick = () => {
 }
 let hasChanged = false
 let changed = document.getElementById('maintextbox')
+let changed2 = document.getElementById('title')
 changed.addEventListener("input", () => {
+  hasChanged = true
+})
+changed2.addEventListener("input", () => {
   hasChanged = true
 })
 
@@ -42,20 +46,23 @@ function closePage() {
 
 function saveText() {
   let maintextbox = document.getElementById("maintextbox").value;
+  let title = document.getElementById("title").value;
   localStorage.setItem('notes', maintextbox)
+  localStorage.setItem('title', title)
 }
-maintextbox.value = localStorage.getItem("notes")
+maintextbox.value = localStorage.getItem('notes')
+title.value = localStorage.getItem('title')
 
 function rememberSave() {
   let length = document.getElementById('maintextbox').value.length;
   if (btnClicked == true) {
       history.go(-1);
-  } else if (length == 0) {
-      history.go(-1);
-  } else if (hasChanged == false) {
-      history.go(-1);
-  } else if (length > 0 && btnClicked == false) {
-      document.getElementById("warningmessage").style.display = 'block'
+  } 
+  else if (hasChanged == false) {
+    history.go(-1);
+  }
+  else if (btnClicked == false) {
+    document.getElementById("warningmessage").style.display = 'block'
   }
 }
 
