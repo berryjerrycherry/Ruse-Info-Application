@@ -49,6 +49,13 @@ function saveText() {
   let title = document.getElementById("title").value;
   localStorage.setItem('notes', maintextbox)
   localStorage.setItem('title', title)
+
+let div = document.createElement('div');
+div.id = 'content';
+let text = document.createTextNode(`${title}`);
+div.appendChild(text);
+document.getElementById('sidebar').appendChild(div)
+div.style.color = "white";
 }
 maintextbox.value = localStorage.getItem('notes')
 title.value = localStorage.getItem('title')
