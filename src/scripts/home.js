@@ -88,17 +88,29 @@ setInterval(updateClassesWidget, 10000)
 
 function updateClassesWidget() {
   let today = new Date()
+  let todaysDay = today.getDay()
   let timetableData = storage.getSync('timetableData')
   let currentWeekLetter = week(today)
 
-  timetableData[currentWeekLetter][today.getDay().toString()].forEach((period, i) => {
-    let timestamp = new Date(period.timestamp)
-
-    // Format time and subject
-    document.getElementById(`class-${i + 1}`).innerText = `${timestamp.getHours()}:${timestamp.getMinutes().toString().length < 2 ? `0${timestamp.getMinutes()}`: timestamp.getMinutes()} · ${period.name.slice(0, period.name.indexOf(':'))}`
-    // Format room location
-    document.getElementById(`room-${i + 1}`).innerText = period.location.slice(period.location.indexOf(':') + 1, period.location.length).trim()
-  })
+  if (todaysDay == 6 || todaysDay == 0) {
+    timetableData[invertWeek(currentWeekLetter)]['1'].forEach((period, i) => {
+      let timestamp = new Date(period.timestamp)
+  
+      // Format time and subject
+      document.getElementById(`class-${i + 1}`).innerText = `${timestamp.getHours()}:${timestamp.getMinutes().toString().length < 2 ? `0${timestamp.getMinutes()}`: timestamp.getMinutes()} · ${period.name.slice(0, period.name.indexOf(':'))}`
+      // Format room location
+      document.getElementById(`room-${i + 1}`).innerText = period.location.slice(period.location.indexOf(':') + 1, period.location.length).trim()
+    })
+  } else {
+    timetableData[currentWeekLetter][todaysDay.toString()].forEach((period, i) => {
+      let timestamp = new Date(period.timestamp)
+  
+      // Format time and subject
+      document.getElementById(`class-${i + 1}`).innerText = `${timestamp.getHours()}:${timestamp.getMinutes().toString().length < 2 ? `0${timestamp.getMinutes()}`: timestamp.getMinutes()} · ${period.name.slice(0, period.name.indexOf(':'))}`
+      // Format room location
+      document.getElementById(`room-${i + 1}`).innerText = period.location.slice(period.location.indexOf(':') + 1, period.location.length).trim()
+    })
+  }
 }
 
 updateClassesWidget()
@@ -111,7 +123,7 @@ function updateNextClassWidget() {
   let currentWeekLetter = week(today)
   let dayOfWeek = today.getDay()
 
-  if (dayOfWeek == 6 || dayOfWeek == 7) {
+  if (dayOfWeek == 6 || dayOfWeek == 0) {
     // If its Saturday or Sunday
     let nextMondayPeriods = timetableData[invertWeek(currentWeekLetter)]['1']
 
