@@ -13,11 +13,15 @@ document.getElementById('closebutton2').onclick = function() {
 document.getElementById('yes').onclick = function() {
   continueExit()
 };
-let btnClicked = false
 
+
+let btnClicked = false
 let button = document.getElementById('save-button')
+let buttonclicks = 0
+
 
 button.onclick = () => {
+  buttonclicks +=1
   btnClicked = true
   saveText()
 }
@@ -47,19 +51,42 @@ function closePage() {
 function saveText() {
   let maintextbox = document.getElementById("maintextbox").value;
   let title = document.getElementById("title").value;
+  let trim = title.trim();
+  let length = trim.length
   localStorage.setItem('notes', maintextbox)
   localStorage.setItem('title', title)
+  console.log(length)
 
-let div = document.createElement('div');
-div.id = 'content';
-let text = document.createTextNode(`${title}`);
-div.appendChild(text);
-document.getElementById('sidebar').appendChild(div)
-div.style.color = "white";
+  if (length == 0){
+      let div = document.createElement('div');
+      div.id = 'content';
+      document.getElementById('fileselectarea').appendChild(div)
+  }
+  else if(buttonclicks == 1){
+  let div = document.createElement('div');
+  let text = document.createTextNode(`📄${title}`);
+  div.id = 'content';
+  div.style.color = "white";
+  div.style.fontFamily = 'Noto Sans JP'
+  div.appendChild(text);
+  document.getElementById('fileselectarea').appendChild(div)
+  }
+  else if (buttonclicks > 1){
+    let divid = document.getElementById('content')
+    divid.remove()
+    let div = document.createElement('div');
+    let text = document.createTextNode(`📄${title}`);
+    div.id = 'content';
+    div.style.fontFamily = 'Noto Sans JP'
+    div.style.color = "white";
+    div.appendChild(text);
+    document.getElementById('fileselectarea').appendChild(div)
+  }
+
+
 }
-maintextbox.value = localStorage.getItem('notes')
-title.value = localStorage.getItem('title')
-
+ maintextbox.value = localStorage.getItem('notes')
+  title.value = localStorage.getItem('title')
 function rememberSave() {
   let length = document.getElementById('maintextbox').value.length;
   if (btnClicked == true) {
