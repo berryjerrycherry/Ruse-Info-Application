@@ -1,3 +1,4 @@
+
 :root {
   --primary-bg-color: #1C1E20;
   --secondary-bg-color: #272B2E;
@@ -8,6 +9,16 @@
   --subtitle-text-size: 26px;
   --small-text-size: 14px;
   --title-text-size: 2.5rem;
+}
+
+#draggable {
+  width: 100%;
+  z-index: 99;
+  height: 20px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  -webkit-app-region: drag;
 }
 
 @font-face {

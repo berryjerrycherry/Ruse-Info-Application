@@ -59,6 +59,8 @@ body {
   color: var(--primary-text-color);
   background-color: var(--primary-bg-color);
   animation: fadein .25s linear forwards;
+  margin: 0;
+  user-select: none;
 }
 
 .rounded-card {
@@ -243,6 +245,7 @@ body {
 
 
 .diamond-button {
+  -webkit-app-region: no-drag;
   background-color: var(--diamond-button-bg);
   height: var(--diamond-size);
   text-align: center;
@@ -291,6 +294,12 @@ body {
   position: absolute;
 }
 
-body {
-  user-select: none;
+#draggable {
+  width: 100%;
+  z-index: 99;
+  height: 50px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  -webkit-app-region: drag;
 }

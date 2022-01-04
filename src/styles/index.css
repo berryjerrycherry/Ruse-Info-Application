@@ -17,6 +17,7 @@ img {
 
 body {
   background-color: #1C1E20;
+  -webkit-app-region: drag;
 }
 
 .background {

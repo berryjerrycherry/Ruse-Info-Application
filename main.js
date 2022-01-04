@@ -12,6 +12,11 @@ const createWindow = async () => {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
+    },
+    titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      color: '#1C1E20',
+      symbolColor: 'white'
     }
   })
   mainWindow.setTitle('Ruse Info App')

@@ -104,3 +104,13 @@ body {
 * {
   text-rendering: optimizeLegibility;
 }
+
+#draggable {
+  width: 94%;
+  z-index: 99;
+  height: 50px;
+  left: 6%;
+  top: 0;
+  position: absolute;
+  -webkit-app-region: drag;
+}
