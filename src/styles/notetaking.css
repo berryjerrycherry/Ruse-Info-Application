@@ -307,7 +307,7 @@ body {
   font-size: var(--text-size);
   resize: none;
   outline-color: black;
-  outline-width: 1px;
+  outline-width: 0px;
 }
 
 #title {
@@ -328,7 +328,7 @@ body {
   font-size: var(--text-size);
   resize: none;
   outline-color: black;
-  outline-width: 1px;
+  outline-width: 0px;
 }
 
 .mainbutton {
@@ -368,9 +368,11 @@ body {
 }
 
 #save-button {
+  display: none;
   position: absolute;
-  bottom: 0.5%;
-  right: 2%;
+  bottom: 5%;
+  right: 7%;
+  z-index: 444445;
 }
 
 #yes {
@@ -382,7 +384,7 @@ body {
   ;
 }
 
-#fileselectarea {
+#file-select-area {
   position: absolute;
   height: 83%;
   width: 85%;
@@ -397,6 +399,7 @@ body {
 
 #visiblebase {
   position: absolute;
+  z-index: 10000;
   margin: 20px;
   height: 83%;
   width: 95%;
@@ -409,4 +412,8 @@ body {
   position: absolute;
   top: 0%;
   left: 2%;
+}
+.flex-container{
+  display: flex;
+  flex-direction: column;
 }
